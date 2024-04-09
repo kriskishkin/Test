@@ -1,0 +1,24 @@
+bio_test = {}
+
+line = input()
+number = 1
+while line != "":
+    score = list(line.split(", "))
+    score = [int(x) for x in score]
+
+    bio_test[number] = {}
+    bio_test[number]['score'] = score
+
+    number += 1
+    line = input()
+
+output = ""
+for number, student_info in bio_test.items():    
+    output += f"{number} -"
+    for value in student_info.values():
+        if type(value) is not list:
+            output += f"{value} "
+        else:
+            output += f" score: {sum(value)}, grade: {2 + (sum(value)/60 * 4):.2f}\n"
+
+print(output)
